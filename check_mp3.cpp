@@ -90,3 +90,18 @@ int get_tag(char *file_name)
 	f.close();
 }
 
+unsigned int reverse_byte(void *val)
+{
+	int size = sizeof(int);
+	char buff[4] = {0};
+	void *ptr = buff;
+	int i;
+	unsigned int res;
+	for(i = size - 1; i>=0; i--)
+	{
+		buff[i] = *(unsigned char *)val;
+		val = (unsigned char *)val + 1;
+	}
+	res = *(unsigned int *)ptr;
+	return res;
+}
