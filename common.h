@@ -9,6 +9,7 @@ using namespace std;
 
 bool check_if_mp3(char *str);
 int get_tag(char *file_name);
+unsigned int reverse_byte(void * val);
 
 #define ID3v3_0 1
 #define ID3v3_1 2
