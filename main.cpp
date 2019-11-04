@@ -22,7 +22,6 @@ int main(int argc,char **argv)
 		cout << "\n\n";
 		cout << "Modifier\t\tFunction"<<endl;
 		cout << "\t-t\t\tModifies Title Tag"<<endl;
-		cout << "\t-T\t\tModifies Track Tag"<<endl;
 		cout << "\t-a\t\tModifies Artist Tag"<<endl;
 		cout << "\t-A\t\tModifies Album Tag"<<endl;
 		cout << "\t-y\t\tModifies Year Tag"<<endl;
@@ -56,15 +55,79 @@ int main(int argc,char **argv)
 	id3_write *Wr;
 	if(tag == ID3v3_0 ||tag == ID3v3_1|| tag == ID3v3_2)
 	{
-		id3v3 B(argv[2]);
-		A=&B;
-		A->get_all();
-		/*A->get_title();
-		A->get_artist();
-		A->get_album();
-		A->get_year();
-		A->get_genre();
-		A->get_comments();*/
+		if(flag && strcmp(argv[3],"-t")==0)
+		{
+			id3v3_write B(argv[2]);
+			Wr=&B;
+			Wr->put_title(argv[4]);
+		}
+		else if(flag == 0 && strcmp(argv[3],"-t")==0)
+		{
+			id3v3 B(argv[2]);
+			A=&B;
+			A->get_title();
+		}
+		if(flag && strcmp(argv[3],"-a")==0)
+		{
+			id3v3_write B(argv[2]);
+			Wr=&B;
+			Wr->put_artist(argv[4]);
+		}
+		else if(flag == 0 && strcmp(argv[3],"-a")==0)
+		{
+			id3v3 B(argv[2]);
+			A=&B;
+			A->get_artist();
+		}
+		if(flag && strcmp(argv[3],"-A")==0)
+		{
+			id3v3_write B(argv[2]);
+			Wr=&B;
+			cout << "Hek" << endl;
+			Wr->put_album(argv[4]);
+		}
+		else if(flag == 0 && strcmp(argv[3],"-A")==0)
+		{
+			id3v3 B(argv[2]);
+			A=&B;
+			A->get_album();
+		}
+		if(flag && strcmp(argv[3],"-y")==0)
+		{
+			id3v3_write B(argv[2]);
+			Wr=&B;
+			Wr->put_year(argv[4]);
+		}
+		else if(flag == 0 && strcmp(argv[3],"-y")==0)
+		{
+			id3v3 B(argv[2]);
+			A=&B;
+			A->get_year();
+		}
+		if(flag && strcmp(argv[3],"-g")==0)
+		{
+			id3v3_write B(argv[2]);
+			Wr=&B;
+			Wr->put_genre(argv[4]);
+		}
+		else if(flag == 0 && strcmp(argv[3],"-g")==0)
+		{
+			id3v3 B(argv[2]);
+			A=&B;
+			A->get_genre();
+		}
+		if(flag && strcmp(argv[3],"-c")==0)
+		{
+			id3v3_write B(argv[2]);
+			Wr=&B;
+			Wr->put_comments(argv[4]);
+		}
+		else if(flag == 0 && strcmp(argv[3],"-c")==0)
+		{
+			id3v3 B(argv[2]);
+			A=&B;
+			A->get_comments();
+		}
 	}
 	else if(tag == ID3v2_0 ||tag == ID3v2_1|| tag == ID3v2_2)
 	{
