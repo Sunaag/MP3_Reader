@@ -142,21 +142,78 @@ int main(int argc,char **argv)
 	}
 	else if(tag == ID3v1)
 	{
-		if(flag)
+		if(flag && strcmp(argv[3],"-t")==0)
 		{
-			id3v1_write wr2(argv[2]);
-			Wr = &wr2;
-			cout << "Enter a title:";
-			getline(cin,title);
-			Wr -> put_title((char *)title.c_str());
+			id3v1_write B(argv[2]);
+			Wr=&B;
+			Wr->put_title(argv[4]);
 		}
-		else
+		else if(flag == 0 && strcmp(argv[3],"-t")==0)
+		{
+			id3v1 B(argv[2]);
+			A=&B;
+			A->get_title();
+		}
+		if(flag && strcmp(argv[3],"-a")==0)
+		{
+			id3v1_write B(argv[2]);
+			Wr=&B;
+			Wr->put_artist(argv[4]);
+		}
+		else if(flag == 0 && strcmp(argv[3],"-a")==0)
 		{
 			id3v1 B(argv[2]);
 			A=&B;
 			A->get_artist();
+		}
+		if(flag && strcmp(argv[3],"-A")==0)
+		{
+			id3v1_write B(argv[2]);
+			Wr=&B;
+			cout << "Hek" << endl;
+			Wr->put_album(argv[4]);
+		}
+		else if(flag == 0 && strcmp(argv[3],"-A")==0)
+		{
+			id3v1 B(argv[2]);
+			A=&B;
 			A->get_album();
-			A->get_title();
+		}
+		if(flag && strcmp(argv[3],"-y")==0)
+		{
+			id3v1_write B(argv[2]);
+			Wr=&B;
+			Wr->put_year(argv[4]);
+		}
+		else if(flag == 0 && strcmp(argv[3],"-y")==0)
+		{
+			id3v1 B(argv[2]);
+			A=&B;
+			A->get_year();
+		}
+		if(flag && strcmp(argv[3],"-g")==0)
+		{
+			id3v1_write B(argv[2]);
+			Wr=&B;
+			Wr->put_genre(argv[4]);
+		}
+		else if(flag == 0 && strcmp(argv[3],"-g")==0)
+		{
+			id3v1 B(argv[2]);
+			A=&B;
+			A->get_genre();
+		}
+		if(flag && strcmp(argv[3],"-c")==0)
+		{
+			id3v1_write B(argv[2]);
+			Wr=&B;
+			Wr->put_comments(argv[4]);
+		}
+		else if(flag == 0 && strcmp(argv[3],"-c")==0)
+		{
+			id3v1 B(argv[2]);
+			A=&B;
+			A->get_comments();
 		}
 	}
 }
